@@ -1,0 +1,12 @@
+server:
+  host: "127.0.0.1"
+  port: 3721
+
+database:
+  user: "admin"
+  password: "secret"
+
+public:
+  binfile: "./bin/ezkl"
+  models: "./models"
+

@@ -41,25 +41,57 @@ The project is based on `ezkl`, a framework for integrating zero-knowledge proof
 
 ## Usage
 
+## Configuration
+
+```
+server:
+  host: "127.0.0.1"
+  port: 3721
+
+database:
+  user: "admin"
+  password: "secret"
+
+public:
+  binfile: "./bin/ezkl"
+  models: "./models"
+
+```
+
 ### Running the Server
 
 The worker can also be run as an HTTP server, providing API endpoints for proof generation and verification. To run the server:
 
 ```bash
-cargo run --release
+cargo run -- --config ./templates/config.yaml
 ```
 
 The server exposes the following API endpoints:
 
-- **`/api1/v1/prove`**: Generates a zk proof for the provided input.
-- **`/api1/v1/verify`**: Verifies a zk proof.
-- **`/api1/v1/ping`**: Simple ping endpoint for health checks.
-- **`/api1/v1/healthcheck`**: Returns the health status of the worker.
+- **`/api/v1/verify`**: Verifies a zk proof.
 
-## Configuration
+```
+POST /api/v1/verify
+{
+    "req_id": "1",
+    "model": "1l_average",
+    "proof_path": "path to proof file"
+}
+```
 
-- **ONNX Model Path**: The default ONNX model path is `./models/network.onnx`. You can change this by modifying the environment variable `ONNX_MODEL_PATH`.
-- **Proof Settings**: Proof-related settings can be modified through the generated `settings.json` file during setup.
+- **`/api/v1/ping`**: Simple ping endpoint for health checks.
+
+```
+GET /api/v1/ping
+```
+
+- **`/api/v1/healthcheck`**: Returns the health status of the worker.
+
+```
+GET /api/v1/healthcheck
+
+```
+
 
 ## Contribution
 

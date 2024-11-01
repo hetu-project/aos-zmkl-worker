@@ -16,4 +16,8 @@ tracing-subscriber = { version = "0.3", features = ["env-filter"] }
 tower = { version = "0.4.13", features = ["util", "timeout", "load-shed", "limit"] }
 tower-http = { version = "0.5.2", features = ["add-extension", "auth", "compression-full", "trace", "cors"] }
 thiserror = "1.0.22"
+reqwest = { version = "0.11", features = ["blocking", "json"] }
+tempfile = "3.5"
+structopt = "0.3.11"
+tracing-appender = "0.2.3"
 

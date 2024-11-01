@@ -16,11 +16,18 @@ pub struct DatabaseConfig {
         pub password: String,
 }
 
+#[derive(Clone, Debug, Deserialize)]
+pub struct PublicConfig {
+        pub binfile: String,
+        pub models: String,
+}
+
 
 #[derive(Clone, Debug, Deserialize)]
 pub struct Config {
         pub server: ServerConfig,
         pub database: DatabaseConfig,
+        pub public: PublicConfig,
 }
 
 impl Config {
